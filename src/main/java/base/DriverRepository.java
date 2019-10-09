@@ -26,18 +26,19 @@ public class DriverRepository {
         this.node = node;
 
         Platform platform = Platform.fromString(os.toUpperCase());
-        if(browser.equalsIgnoreCase("chrome")) {
+        if (browser.equalsIgnoreCase("chrome")) {
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.setCapability("platform", platform);
-            this.driver = new RemoteWebDriver(new URL(node + "/wd/hub"), chromeOptions);
+            chromeOptions.addArguments("--whitelisted-ips=''");
+            this.driver = new RemoteWebDriver(new URL(node), chromeOptions);
         } else if (browser.equalsIgnoreCase("firefox")) {
             FirefoxOptions firefoxOptions = new FirefoxOptions();
             firefoxOptions.setCapability("platform", platform);
-            this.driver = new RemoteWebDriver(new URL(node + "/wd/hub"), firefoxOptions);
+            this.driver = new RemoteWebDriver(new URL(node), firefoxOptions);
         } else {
             InternetExplorerOptions ieOption = new InternetExplorerOptions();
             ieOption.setCapability("platform", platform);
-            this.driver = new RemoteWebDriver(new URL(node + "/wd/hub"), ieOption);
+            this.driver = new RemoteWebDriver(new URL(node), ieOption);
         }
 
         this.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);

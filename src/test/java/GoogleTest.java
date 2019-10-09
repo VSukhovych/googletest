@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
 
-public class GoogleSearchTest {
+public class GoogleTest {
 
     public WebDriver driver;
 
@@ -36,7 +36,7 @@ public class GoogleSearchTest {
     @Test
     public void googleSearchButtonTest() {
         // basic test to validate that search button is displayed, enabled and it's value
-        WebElement searchButtonElement = driver.findElement(By.name("btnK"));
+        WebElement searchButtonElement = driver.findElement(By.xpath(".//*[@class='FPdoLc VlcLAe']//*[@class='gNO89b']"));
         Assert.assertTrue(searchButtonElement.isDisplayed());
         Assert.assertTrue(searchButtonElement.isEnabled());
         Assert.assertTrue(searchButtonElement.getAttribute("value").contains("Google Search"));
@@ -45,7 +45,7 @@ public class GoogleSearchTest {
     @Test
     public void googleFeelingLuckyButtonTest() {
         // basic test to validate that feeling lucky button is displayed, enabled and it's value
-        WebElement feelingLuckyElement = driver.findElement(By.name("btnI"));
+        WebElement feelingLuckyElement = driver.findElement(By.xpath(".//*[@class='FPdoLc VlcLAe']//*[@class='RNmpXc']"));
         Assert.assertTrue(feelingLuckyElement.isDisplayed());
         Assert.assertTrue(feelingLuckyElement.isEnabled());
         Assert.assertTrue(feelingLuckyElement.getAttribute("value").contains("I'm Feeling Lucky"));
@@ -59,6 +59,16 @@ public class GoogleSearchTest {
         Assert.assertTrue(searchElement.isEnabled());
     }
 
+    @Test
+    public void googleSearchTest() {
+        // basic search test
+        WebElement searchInput = driver.findElement(By.name("q"));
+        searchInput.sendKeys("test");
+        WebElement searchButtonElement = driver.findElement(By.xpath(".//*[@class='FPdoLc VlcLAe']//*[@class='gNO89b']"));
+        searchButtonElement.click();
+        String firstSearchResultText = driver.findElement(By.xpath(".//*[@class='LC20lb']")).getText();
+        Assert.assertTrue(firstSearchResultText.toLowerCase().contains("test"), "Error - search result is not correct");
+    }
 
     @AfterClass(alwaysRun = true)
     public void closeBrowser() {
