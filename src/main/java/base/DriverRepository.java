@@ -2,6 +2,7 @@ package base;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerOptions;
@@ -47,6 +48,9 @@ public class DriverRepository {
 
     }
 
+    public DriverRepository() {
+    }
+
     public String getOs() {
         return this.os;
     }
@@ -64,6 +68,7 @@ public class DriverRepository {
     }
 
     public WebDriver getDriver() {
-        return this.driver;
+        System.setProperty("webdriver.chrome.driver", "C:/drivers/chromedriver.exe");
+        return driver = new ChromeDriver();
     }
 }

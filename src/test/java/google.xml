@@ -4,7 +4,7 @@
 <suite name="Google Search Tests" verbose="1" parallel="tests">
     <parameter name="url" value="https://www.google.com/"/>
     <parameter name="os" value="windows"/>
-    <parameter name="node" value="http://192.168.1.101:4444"/>
+    <parameter name="node" value="http://192.168.1.3:4444"/>
 
     <test name="Tests on Firefox" preserve-order="true" group-by-instances="true">
         <parameter name="browser" value="firefox"/>
@@ -13,18 +13,18 @@
         </classes>
     </test>
 
-    <test name="Tests on IE11" preserve-order="true" group-by-instances="true">
-        <parameter name="browser" value="ie11"/>
-        <classes>
-            <class name="GoogleTest"/>
-        </classes>
-    </test>
+<!--    <test name="Tests on IE11" preserve-order="true" group-by-instances="true">-->
+<!--        <parameter name="browser" value="ie11"/>-->
+<!--        <classes>-->
+<!--            <class name="GoogleTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Tests on Chrome" preserve-order="true" group-by-instances="true">
-        <parameter name="browser" value="chrome"/>
-        <classes>
-            <class name="GoogleTest"/>
-        </classes>
-    </test>
+<!--    <test name="Tests on Chrome" preserve-order="true" group-by-instances="true">-->
+<!--        <parameter name="browser" value="chrome"/>-->
+<!--        <classes>-->
+<!--            <class name="GoogleTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
 </suite>
